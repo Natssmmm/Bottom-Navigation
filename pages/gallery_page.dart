@@ -6,6 +6,7 @@ class GalleryPage extends StatelessWidget {
     'assets/gallery2.jpg',
     'assets/gallery3.jpg',
     'assets/gallery4.jpg',
+    'assets/profile.jpg'
   ];
 
   @override

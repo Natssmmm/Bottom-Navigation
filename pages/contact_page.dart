@@ -1,82 +1,37 @@
 import 'package:flutter/material.dart';
 
-class ContactPage extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
+class GalleryPage extends StatelessWidget {
+  final List<String> images = [
+    'assets/gallery1.jpg',
+    'assets/gallery2.jpg',
+    'assets/gallery3.jpg',
+    'assets/gallery4.jpg',
+    'assets/profile.jpg'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contact Me'),
+        title: Text('My Gallery'),
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Your Name'),
-                validator: (value) =>
-                value!.isEmpty ? 'Please enter your name' : null,
-              ),
-
-              TextFormField(
-
-                decoration: InputDecoration(labelText: 'Your Email'),
-
-                validator: (value) =>
-
-                value!.isEmpty ? 'Please enter your email' : null,
-
-              ),
-
-              TextFormField(
-
-                decoration: InputDecoration(labelText: 'Message'),
-
-                maxLines: 3,
-
-                validator: (value) =>
-
-                value!.isEmpty ? 'Please enter your message' : null,
-
-              ),
-
-              SizedBox(height: 20),
-
-              ElevatedButton(
-
-                onPressed: () {
-
-                  if (_formKey.currentState!.validate()) {
-
-                    ScaffoldMessenger.of(context).showSnackBar(
-
-                      SnackBar(content: Text('Message Sent!')),
-
-                    );
-
-                  }
-
-                },
-
-                child: Text('Send'),
-
-              ),
-
-            ],
-
-          ),
-
+      body: GridView.builder(
+        padding: EdgeInsets.all(10),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // two images per row
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
         ),
-
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(images[index], fit: BoxFit.cover),
+          );
+        },
       ),
-
     );
-
   }
-
 }

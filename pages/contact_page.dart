@@ -20,63 +20,63 @@ class ContactPage extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(labelText: 'Your Name'),
                 validator: (value) =>
-                  value!.isEmpty ? 'Please enter your name' : null,
-                ),
+                value!.isEmpty ? 'Please enter your name' : null,
+              ),
 
-                TextFormField(
+              TextFormField(
 
-                  decoration: InputDecoration(labelText: 'Your Email'),
+                decoration: InputDecoration(labelText: 'Your Email'),
 
-                  validator: (value) =>
+                validator: (value) =>
 
-                      value!.isEmpty ? 'Please enter your email' : null,
+                value!.isEmpty ? 'Please enter your email' : null,
 
-                ),
+              ),
 
-                TextFormField(
+              TextFormField(
 
-                  decoration: InputDecoration(labelText: 'Message'),
+                decoration: InputDecoration(labelText: 'Message'),
 
-                  maxLines: 3,
+                maxLines: 3,
 
-                  validator: (value) =>
+                validator: (value) =>
 
-                      value!.isEmpty ? 'Please enter your message' : null,
+                value!.isEmpty ? 'Please enter your message' : null,
 
-                ),
+              ),
 
-                SizedBox(height: 20),
+              SizedBox(height: 20),
 
-                ElevatedButton(
+              ElevatedButton(
 
-                  onPressed: () {
+                onPressed: () {
 
-                    if (_formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate()) {
 
-                      ScaffoldMessenger.of(context).showSnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(
 
-                        SnackBar(content: Text('Message Sent!')),
+                      SnackBar(content: Text('Message Sent!')),
 
-                      );
+                    );
 
-                    }
+                  }
 
-                  },
+                },
 
-                  child: Text('Send'),
+                child: Text('Send'),
 
-                ),
+              ),
 
-             ],
-
-            ),
+            ],
 
           ),
 
         ),
 
-      );
+      ),
 
-    }
+    );
 
   }
+
+}

@@ -6,13 +6,26 @@ import 'pages/gallery_page.dart';
 import 'pages/contact_page.dart';
 
 class MainNavigationPage extends StatefulWidget{
+  const MainNavigationPage({Key? key}) : super(key: key);
+
   @override
-  _MainNavigationPageSate createState() => _MainNavigationPageSate();
+  _MainNavigationPageState createState() => _MainNavigationPageState();
 }
 
-class _MainNavigationPageSate extends State {
+class _MainNavigationPageState extends State<MainNavigationPage> {
+  final PageController _pageController = PageController(initialPage: 2);
   int _selectedIndex = 2;
-  PageController _pageController = PageController(initialPage: 2);
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +34,7 @@ class _MainNavigationPageSate extends State {
         controller: _pageController,
         children: [
           AboutPage(),
-          ProjectPage(),
+          ProjectsPage(),
           HomePage(),
           GalleryPage(),
           ContactPage(),
@@ -34,6 +47,7 @@ class _MainNavigationPageSate extends State {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
         onTap: _onTabTapped,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
@@ -47,16 +61,6 @@ class _MainNavigationPageSate extends State {
           BottomNavigationBarItem(icon: Icon(Icons.contact_mail), label: 'Contact'),
         ],
       ),
-    );
-  }
-  void _onTabTapped(int index) {
-    setState((){
-      _selectedIndex = index;
-    });
-    _pageController.animateToPage(
-      index,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
     );
   }
 

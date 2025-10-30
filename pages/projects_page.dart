@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProjectPage extends StatelessWidget{
+class ProjectsPage extends StatelessWidget{
   final List <String> projects = [
     "Portfolio Website",
     "E-commerce App",
